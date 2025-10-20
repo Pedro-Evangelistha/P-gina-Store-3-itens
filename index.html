@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> 
+    <title>DevClub Store</title>
+</head>
+<body>
+    <!-- cabeçalho do projeto, parte superior-->
+    <header>
+        <div class="logo">DevClub Store</div>
+        <!-- menu de —navegação—, home, produtos, contatos -->
+        <nav> 
+            <!-- listas -->
+            <ul>
+                <li>Home</li>
+                <li>Produtos</li>
+                <li>Contatos</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- tag usada para parte principal da página, no caso carrossel  -->
+    <main class="conteiner">
+        <!-- circulos feitos de fundo no site, com css -->
+        <div class="tech cicles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <!-- itens que ficam passando  -->
+         
+        <div class="list">
+
+            <!-- super importante! só uma das classes vao ter o active, a que não tiver, vai ficar invisivel. então item active, é separado sem traço entre eles. a interação de alternar o active, será feita com JavaScript -->
+
+            <!-- ESSE É O PRIMEIRO! APPLE WATCH SERIES 10 -->
+
+            <div class="item active">
+
+                <div class="product-img">
+                    <!-- tag imagem com o apple watch e texto ALTernativo = Apple Watch. -->
+                    <img src="./img/apple-watch.png" alt="Apple Watch">
+                </div>
+
+                <!-- criação do conteúdo, ou seja, aqueles textos ao lado das imagens, explicando o produto e etc. -->
+                <div class="content">
+                    <!-- tag paragrafo especificando o produto.  -->
+                    <p class="product-tag">Novo Lançamento</p>
+                    <p class="product-name">Apple Watch Series 10</p>
+                    <p class="product-description">O smartwatch mais avançado do mercado. Monitoramento completo de saúde, GPS integrado, tela AMOLED de alta resolução e bateria de longa duração. Perfeito para acompanhar seu estilo de vida ativo.</p>
+                    <!-- tag do botão  -->
+                    <button class="btn">Saiba Mais</button>
+                </div>                                      
+            </div>
+
+            <!-- ESSE É O SEGUNDO! AIR PODS MAX-->
+
+            <!-- Segundo item -->
+<div class="item">
+  <div class="product-img">
+    <img src="./img/air-pods.png" alt="Air Pods Max">
+  </div>
+  <div class="content">
+    <p class="product-tag">Som Premium</p>
+    <p class="product-name">Air Pods Max</p>
+    <p class="product-description">Experimente o som em sua forma mais pura. Cancelamento de ruído adaptativo, qualidade de áudio excepcional e design ergonômico para o máximo conforto. Sua música nunca soou tão bem.</p>
+    <button class="btn">Saiba Mais</button>
+  </div>
+</div> <!-- FECHA O SEGUNDO ITEM AQUI -->
+
+<!-- Terceiro item -->
+<div class="item">
+  <div class="product-img">
+    <img src="./img/vision-pro.png" alt="Vision Pro">
+  </div>
+  <div class="content">
+    <p class="product-tag">Alta Performance</p>
+    <p class="product-name">Vision Pro</p>
+    <p class="product-description">Realidade aumentada imersiva com o Apple Vision Pro: inovação ao alcance dos olhos.</p>
+    <button class="btn">Saiba Mais</button>
+  </div>
+</div>
+
+            </div>
+        </div>
+
+        <!-- BOTÕES LATERAIS. SVG SÃO CÓDIGOS QUE REPLICAM IMAGENS. ESSES FORAM TIRADAS DO bootstrap.com/icons -->
+        <div class="arrows">
+            
+            <!-- esse é o esquerdo.-->
+            <button class="arrow-btn" id="prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+</svg>
+            </button>
+
+            <!-- esse é o direito. o id foi colocado para facilitar na hora do javascript-->        
+            <button class="arrow-btn" id="next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+  <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+</svg>
+            </button>
+        </div>
+            <!-- numeros postos no centro inferior -->
+        <div class="indicators">
+            <!-- essa div sao pros numeros e os pontinhos. que partem da mesma ideia do active. o que tiver com a classe active será visualizado e os demais invisiveis -->
+            <div class="numbers">01</div>
+            <!-- dots significa pontos -->
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="./scripts.js"></script>
+
+</html>
+

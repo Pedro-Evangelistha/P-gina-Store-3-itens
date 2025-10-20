@@ -1,0 +1,325 @@
+/* seletor universal: aplica as regras a todos os elementos da página */
+* {
+    margin: 0; /* remove a margem externa padrão dos elementos */
+    padding: 0; /* remove o preenchimento interno padrão dos elementos */
+    box-sizing: border-box; /* inclui padding e border dentro da largura e altura dos elementos */
+    list-style: none; /* remove os marcadores padrão das listas */
+    font-family: "Montserrat", sans-serif; /* define a fonte padrão do site */
+}
+
+body {
+    background-color: #0f0f1e; /* define a cor de fundo da página */
+    color: #fff; /* define a cor do texto como branco */
+    font-size: 16px; /* define o tamanho base da fonte */
+    overflow: hidden; /* impede que a página tenha rolagem */
+}
+
+header {
+    position: fixed; /* fixa o header no topo, mesmo com rolagem (se houvesse) */
+    width: 90vw; /* largura de 90% da viewport */
+    top: 0; /* alinha o header ao topo da tela */
+    padding: 20px 50px; /* espaçamento interno: 20px vertical, 50px horizontal */
+    display: flex; /* ativa o modelo flexível de layout */
+    justify-content: space-between; /* espaça os elementos igualmente, com um em cada extremo */
+    align-items: center; /* centraliza os itens verticalmente */
+    z-index: 3; /* mantém o header acima de outros elementos na pilha */
+}
+
+.logo {
+    font-family: "Orbitron", sans-serif; /* define a fonte da logo */
+    font-size: 2rem; /* tamanho da fonte relativo ao root (2x) */
+    font-weight: 900; /* peso da fonte: bem negrito */
+    color: #00f7ff; /* cor da fonte em azul neon */
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5); /* sombra com brilho ao redor do texto */
+}
+
+header nav ul {
+    display: flex; /* alinha os itens da lista horizontalmente */
+    gap: 48px; /* espaçamento entre os itens */
+}
+
+header nav ul li {
+    cursor: pointer; /* muda o cursor ao passar por cima (indicando clique) */
+    position: relative; /* base para o posicionamento do ::after */
+    padding: 5px 0; /* espaçamento vertical dentro de cada item */
+}
+
+header nav ul li::after {
+    content: ''; /* cria um pseudo-elemento vazio */
+    position: absolute; /* posiciona em relação ao li */
+    left: 0; /* alinha à esquerda */
+    bottom: 0; /* alinha na parte inferior */
+    width: 0; /* começa com largura zero (invisível) */
+    height: 2px; /* altura da linha de destaque */
+    background-color: #00f7ff; /* cor da linha */
+    transition: width 0.2s ease; /* anima a mudança de largura */
+}
+
+header nav ul li:hover::after {
+    width: 100%; /* quando hover e after (depois), a linha se expande para 100% */
+}
+
+.conteiner {
+    height: 100vh; /* altura igual à altura total da tela */
+    position: relative; /* base para posicionamentos absolutos internos */
+    background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100%); /* fundo em gradiente */
+    overflow: hidden; /* oculta elementos que ultrapassam o container */
+}
+
+.conteiner::before {
+    content: ''; /* pseudo-elemento vazio */
+    position: absolute; /* posicionamento livre dentro do container */
+    width: 500px;
+    height: 500px;
+    border-radius: 50%; /* forma circular */
+    background: radial-gradient(circle, rgba(0,247,255,0.2) 0%, rgba(15, 15, 30, 0) 70%); /* círculo com brilho no centro */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centraliza exatamente o círculo */
+    filter: blur(50px); /* aplica um efeito esfumaçado */
+    z-index: 1; /* fica atrás dos conteúdos principais */
+    animation: pulse 1.8s infinite alternate; /* aplica a animação definida abaixo */
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5; /* meio transparente no início */
+        transform: translate(-50%, -50%) scale(0.8); /* menor tamanho */
+    }
+    100% {
+        opacity: 1; /* totalmente visível no fim */
+        transform: translate(-50%, -50%) scale(2); /* dobra de tamanho */
+    }
+}
+
+.list {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto; /* centraliza horizontalmente */
+    position: relative;
+}
+
+.item {
+    position: absolute;
+    inset: 0; /* posiciona o item para preencher completamente o container pai */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* começa invisível */
+    gap: 40px;
+    transform: translateX(100vw); /* inicia fora da tela (à direita) */
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out; /* animações suaves */
+}
+
+.active {
+    opacity: 1; /* torna visível */
+    transform: translateX(0); /* volta à posição original */
+}
+
+.product-img {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* acima do efeito de fundo */
+}
+
+.product-img img {
+    max-height: 70%; /* altura máxima da imagem */
+    max-width: 100%; /* largura máxima da imagem */
+    filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3)); /* sombra ao redor da imagem */
+    display: block;
+    margin: auto;
+    transform: translateX(400px); /* começa fora da posição */
+    opacity: 0; /* invisível inicialmente */
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s; /* atraso na animação */
+}
+
+.active .product-img img {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.content {
+    width: 55%;
+    padding-right: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 2;
+    flex-direction: column;
+}
+
+.product-tag {
+    font-size: 1rem;
+    text-transform: uppercase; /* transforma o texto em maiúsculo */
+    color: #00f7ff;
+    font-weight: 600;
+    letter-spacing: 2px; /* espaçamento entre letras */
+    margin-bottom: 10px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s;
+}
+.active .product-tag {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.product-name {
+    font-size: 4.5rem;
+    font-family: "Orbitron", sans-serif;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s;
+}
+.active .product-name {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    color: #b8b8d0;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s;
+}
+.active .product-description {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.btn {
+    padding: 12px 10px;
+    background: linear-gradient(90deg, #00f7ff, #0066ff); /* gradiente no botão, aquele efeito com duas cores */
+    border-radius: 30px; /* bordas arredondadas */
+    color: #000; /* texto preto */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transition-delay: 0.5s;
+}
+.active .btn {
+    transform: translateX(0);
+    opacity: 1;
+}
+.content .btn {
+    margin-top: 20px;
+}
+
+.arrows {
+    position: absolute;
+    width: 90%;
+    display: flex;
+    justify-content: space-between; /* setas nos extremos esquerdo e direito */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.arrow-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1); /* fundo translúcido */
+    border: 1px solid rgba(0, 247, 255, 0.3);
+}
+
+.arrow-btn:hover {
+    background-color: rgba(0, 247, 255, 0.2); /* fundo mais visível ao passar o mouse */
+    border-color: #00f7ff;
+}
+
+.indicators {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 5;
+}
+
+.numbers {
+    font-family: "Orbitron", sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 40px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.dot.active {
+    background-color: #00f7ff;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+.tech-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+.circle:nth-child(1){
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 10%;
+}
+.circle:nth-child(2){
+    width: 300px;
+    height: 300px;
+    top: 60%;
+    left: 60%;
+}   
+.circle:nth-child(3){
+    width: 150px;
+    height: 150px;
+    top: 70%;
+    left: 20%;
+}
+.circle:nth-child(4){
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 70%;
+}
